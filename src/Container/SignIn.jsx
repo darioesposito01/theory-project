@@ -1,6 +1,5 @@
 import { useAuthActions } from "@convex-dev/auth/react";
 import { useState } from "react";
-import { OrbitProgress } from "react-loading-indicators";
 import { Eye, EyeOff } from "lucide-react";
 
 export default function AuthForm() {
@@ -91,11 +90,14 @@ export default function AuthForm() {
             <div className="form-control mt-6">
               <button 
                 type="submit" 
-                className={`btn btn-primary justify-center align-middle content-center ${isLoading ? 'loading' : ''}`}
+                className={`btn btn-primary w-full flex justify-center align-middle content-center`}
                 disabled={isLoading}
               >
                 {isLoading 
-                  ? <OrbitProgress color="#32cd32" size="small" text="" textColor="" />
+                  ? 
+                  <div className="justify-center items-center">
+                    <span className="loading loading-spinner loading-xs"></span>
+                    </div>
                   : (step === "signIn" ? "Login" : "Registrati")
                 }
               </button>
