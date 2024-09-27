@@ -16,12 +16,15 @@ export const update = mutation({
     
     const userId = args.userId
     console.log('id utente user id'+ userId)
+
+    //Trova l'utente nella tabella users
     const user = await ctx.db.query('users').filter(q => q.eq(q.field('_id'), userId)).first();
     
     if (!user) {
       throw new Error('Utente non trovato');
     }
 
+    //Aggiorna i dati dell'utente
     await ctx.db.patch(user._id, {
       name: args.name,
       image: args.image,

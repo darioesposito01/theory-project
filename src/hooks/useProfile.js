@@ -1,4 +1,3 @@
-// hooks/useProfile.js
 import { useState, useEffect } from 'react';
 import { useQuery, useMutation } from 'convex/react';
 import { api } from '../../convex/_generated/api';
@@ -39,6 +38,15 @@ export const useProfile = () => {
     setPreviewImage(url);
   };
 
+  
+  const resetToOriginalValues = () => {
+    if (currentUser) {
+      setUsername(currentUser.name || '');
+      setImageUrl(currentUser.image || '');
+      setPreviewImage(currentUser.image || '');
+    }
+  };
+
   return {
     currentUser,
     username,
@@ -46,7 +54,9 @@ export const useProfile = () => {
     imageUrl,
     setImageUrl,
     previewImage,
+    setPreviewImage,
     handleSubmit,
-    handleImageUrlChange
+    handleImageUrlChange,
+    resetToOriginalValues
   };
 };

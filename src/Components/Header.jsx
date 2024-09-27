@@ -10,7 +10,6 @@ const location = useLocation();
     if(location.pathname !== '/'){
         window.location.href = '/'; 
     }
-    // window.location.href = '/';
   };
 
   return (

@@ -10,6 +10,7 @@ export const create = mutation({
   },
 });
 
+//Restituisce la lista dei post di un utente specifico
 export const list = query({
   args: { userId: v.string() },
   handler: async (ctx, args) => {
@@ -20,6 +21,7 @@ export const list = query({
       .collect();
   },
 });
+
 
 export const deletePost = mutation({
   args: { postId: v.string() },
