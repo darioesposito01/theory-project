@@ -1,7 +1,7 @@
 import './App.css'
 import { Authenticated, AuthLoading, Unauthenticated } from 'convex/react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { OrbitProgress } from 'react-loading-indicators'
+
 import { useAuthActions } from '@convex-dev/auth/react';
 import SignIn from './Container/SignIn'
 import Header from './Components/Header';
@@ -15,7 +15,9 @@ function App() {
   return (
     <Router>
       <AuthLoading>
-        <OrbitProgress color="#32cd32" size="medium" text="" textColor="" />
+      <div className="flex justify-center items-center h-40">
+            <span className="loading loading-spinner loading-lg"></span>
+          </div>
       </AuthLoading>
       
       <Unauthenticated>
