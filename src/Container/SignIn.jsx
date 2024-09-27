@@ -21,8 +21,15 @@ export default function AuthForm() {
 
     try {
       await signIn("password", formData);
-    } catch {
-      alert('qualcosa non va')
+    } catch (e){
+
+      //gestione errori di email e password (non ottimale ma giusto per fornire  un feedback all'utente)
+      if(e.toString().includes('InvalidAccountId')){
+        alert('Qualcosa non va, indirizzo email errato')
+      }else if(e.toString().includes('InvalidSecret')){
+        alert('Qualcosa non va, password errata')
+      }
+      
     } finally {
       setIsLoading(false);
     }
